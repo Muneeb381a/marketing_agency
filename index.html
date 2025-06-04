@@ -1,201 +1,974 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GrowEasy Digital Marketing</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .nav-sticky {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        .btn-cta {
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .btn-cta:hover {
-            transform: scale(1.05);
-        }
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-        .hamburger div {
-            transition: all 0.3s ease;
-        }
-        .hamburger.active .bar1 {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger.active .bar2 {
-            opacity: 0;
-        }
-        .hamburger.active .bar3 {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        .mobile-menu {
-            transition: transform 0.3s ease;
-        }
+      :root {
+          --primary: #4361ee;
+          --secondary: #3f37c9;
+          --accent: #4cc9f0;
+          --dark: #1d3557;
+          --light: #f8f9fa;
+      }
+
+      body {
+          font-family: 'Inter', sans-serif;
+          scroll-behavior: smooth;
+          background-color: #fafcff;
+          color: #333;
+      }
+
+      .poppins {
+          font-family: 'Poppins', sans-serif;
+      }
+
+      .nav-sticky {
+          position: sticky;
+          top: 0;
+          z-index: 50;
+          backdrop-filter: blur(10px);
+          background: rgba(255, 255, 255, 0.95);
+          transition: all 0.3s ease;
+      }
+
+      .nav-scrolled {
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+          background: rgba(255, 255, 255, 0.98);
+      }
+
+      .btn-cta {
+          transition: transform 0.3s ease, background-color 0.3s ease;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .btn-cta:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 7px 20px rgba(67, 97, 238, 0.4);
+      }
+
+      .btn-cta:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: 0.5s;
+      }
+
+      .btn-cta:hover:before {
+          left: 100%;
+      }
+
+      .card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border-radius: 16px;
+          overflow: hidden;
+          background: white;
+          position: relative;
+      }
+
+      .card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-icon {
+          width: 80px;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(63, 55, 201, 0.15));
+          margin-bottom: 25px;
+          transition: transform 0.3s ease;
+      }
+
+      .card:hover .card-icon {
+          transform: scale(1.1);
+      }
+
+      .hamburger div {
+          transition: all 0.3s ease;
+      }
+
+      .hamburger.active .bar1 {
+          transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .hamburger.active .bar2 {
+          opacity: 0;
+      }
+
+      .hamburger.active .bar3 {
+          transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      .mobile-menu {
+          transition: transform 0.3s ease;
+      }
+
+      .testimonial-card {
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+      }
+
+      .testimonial-card:before {
+          content: """;
+          position: absolute;
+          top: -20px;
+          left: 20px;
+          font-size: 120px;
+          color: rgba(67, 97, 238, 0.1);
+          font-family: Georgia, serif;
+          line-height: 1;
+      }
+
+      .client-img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          border: 3px solid white;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-image {
+          animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+          100% { transform: translateY(0px); }
+      }
+
+      .stat-card {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(10px);
+          border-radius: 16px;
+          transition: all 0.3s ease;
+      }
+
+      .stat-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .animate-on-scroll.visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      .social-icon {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: rgba(67, 97, 238, 0.1);
+          transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+          background: var(--primary);
+          color: white;
+          transform: translateY(-3px);
+      }
+
+      .gradient-bg {
+          background: linear-gradient(135deg, #4361ee, #3f37c9);
+      }
+
+      .pattern-bg {
+          background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+          background-size: 30px 30px;
+      }
     </style>
-</head>
-<body class="bg-gray-50 text-gray-900">
+  </head>
+  <body class="bg-gray-50 text-gray-900">
     <!-- Navbar -->
-    <header class="nav-sticky shadow-lg">
-        <div class="container mx-auto px-4 py-4">
-            <nav class="flex justify-between items-center">
-                <h1 class="text-2xl font-extrabold text-blue-700">GrowEasy</h1>
-                <div class="hamburger md:hidden cursor-pointer" aria-label="Toggle menu">
-                    <div class="bar1 w-6 h-0.5 bg-gray-700 mb-1.5"></div>
-                    <div class="bar2 w-6 h-0.5 bg-gray-700 mb-1.5"></div>
-                    <div class="bar3 w-6 h-0.5 bg-gray-700"></div>
-                </div>
-                <ul class="hidden md:flex space-x-8 text-sm font-medium">
-                    <li><a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Home">Home</a></li>
-                    <li><a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Services">Services</a></li>
-                    <li><a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="About">About</a></li>
-                    <li><a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Testimonials">Testimonials</a></li>
-                    <li><a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Contact">Contact</a></li>
-                </ul>
-            </nav>
-            <!-- Mobile Menu -->
-            <ul class="mobile-menu hidden flex-col space-y-4 bg-white p-6 absolute top-16 left-0 w-full shadow-lg md:hidden">
-                <li><a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Home">Home</a></li>
-                <li><a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Services">Services</a></li>
-                <li><a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="About">About</a></li>
-                <li><a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Testimonials">Testimonials</a></li>
-                <li><a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Contact">Contact</a></li>
-            </ul>
-        </div>
+    <header class="nav-sticky shadow-lg" id="navbar">
+      <div class="container mx-auto px-4 py-3">
+        <nav class="flex justify-between items-center">
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center mr-3"
+            >
+              <i class="fas fa-chart-line text-white text-xl"></i>
+            </div>
+            <h1 class="text-2xl font-extrabold text-blue-700 poppins">
+              GrowEasy
+            </h1>
+          </div>
+          <div
+            class="hamburger md:hidden cursor-pointer"
+            aria-label="Toggle menu"
+          >
+            <div class="bar1 w-6 h-0.5 bg-gray-700 mb-1.5"></div>
+            <div class="bar2 w-6 h-0.5 bg-gray-700 mb-1.5"></div>
+            <div class="bar3 w-6 h-0.5 bg-gray-700"></div>
+          </div>
+          <ul class="hidden md:flex space-x-8 text-base font-medium">
+            <li>
+              <a
+                href="#home"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                aria-label="Home"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#services"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                aria-label="Services"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                aria-label="About"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#stats"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                aria-label="Stats"
+                >Results</a
+              >
+            </li>
+            <li>
+              <a
+                href="#testimonials"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                aria-label="Testimonials"
+                >Testimonials</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                aria-label="Contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+          <a
+            href="#contact"
+            class="hidden md:block btn-cta text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-blue-600"
+            aria-label="Get Started"
+            >Get Started</a
+          >
+        </nav>
+        <!-- Mobile Menu -->
+        <ul
+          class="mobile-menu hidden flex-col space-y-4 bg-white p-6 absolute top-16 left-0 w-full shadow-lg md:hidden"
+        >
+          <li>
+            <a
+              href="#home"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label="Home"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label="Services"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label="About"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#stats"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label="Stats"
+              >Results</a
+            >
+          </li>
+          <li>
+            <a
+              href="#testimonials"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label="Testimonials"
+              >Testimonials</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label="Contact"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-28">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Skyrocket Your Brand with Expert Digital Marketing</h2>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">We deliver tailored SEO, PPC, and social media strategies to drive measurable growth for your business.</p>
-            <a href="#contact" class="btn-cta bg-white text-blue-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-100" aria-label="Get Started">Get Started</a>
+    <section
+      id="home"
+      class="gradient-bg text-white pt-20 pb-28 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-0 w-full h-full pattern-bg opacity-10"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-64 h-64 bg-blue-400 rounded-full opacity-20 -mt-32 -mr-32"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-96 h-96 bg-purple-400 rounded-full opacity-10 -mb-48 -ml-48"
+      ></div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-16 lg:mb-0 animate-on-scroll">
+            <h2
+              class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight poppins"
+            >
+              Skyrocket Your Brand with Expert
+              <span class="text-blue-200">Digital Marketing</span>
+            </h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl text-blue-100">
+              We deliver tailored SEO, PPC, and social media strategies to drive
+              measurable growth for your business. Transform your online
+              presence today.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <a
+                href="#contact"
+                class="btn-cta px-8 py-4 rounded-full font-semibold text-lg text-center"
+                aria-label="Get Started"
+                >Get Started</a
+              >
+              <a
+                href="#services"
+                class="bg-white/10 border-2 border-white/20 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition text-center"
+                aria-label="Our Services"
+                >Our Services</a
+              >
+            </div>
+          </div>
+          <div class="lg:w-1/2 flex justify-center animate-on-scroll">
+            <div class="hero-image relative">
+              <div
+                class="absolute -top-10 -left-10 w-32 h-32 bg-yellow-400 rounded-full opacity-20"
+              ></div>
+              <div
+                class="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-400 rounded-full opacity-20"
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Digital Marketing"
+                class="rounded-2xl shadow-2xl w-full max-w-lg border-8 border-white/20"
+              />
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-16 relative">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="stat-card p-6 text-center animate-on-scroll">
+            <div class="text-4xl font-bold text-blue-600 mb-2">250+</div>
+            <div class="text-gray-600 font-medium">Happy Clients</div>
+          </div>
+          <div class="stat-card p-6 text-center animate-on-scroll">
+            <div class="text-4xl font-bold text-blue-600 mb-2">98%</div>
+            <div class="text-gray-600 font-medium">Client Retention</div>
+          </div>
+          <div class="stat-card p-6 text-center animate-on-scroll">
+            <div class="text-4xl font-bold text-blue-600 mb-2">500%</div>
+            <div class="text-gray-600 font-medium">Avg. ROI Increase</div>
+          </div>
+          <div class="stat-card p-6 text-center animate-on-scroll">
+            <div class="text-4xl font-bold text-blue-600 mb-2">10M+</div>
+            <div class="text-gray-600 font-medium">Leads Generated</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Our Core Services</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="card bg-white p-8 rounded-xl shadow-lg text-center">
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700">SEO Optimization</h3>
-                    <p class="text-gray-600">Dominate search engine rankings with our data-driven SEO strategies.</p>
-                </div>
-                <div class="card bg-white p-8 rounded-xl shadow-lg text-center">
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700">PPC Advertising</h3>
-                    <p class="text-gray-600">Maximize ROI with targeted, high-performance PPC campaigns.</p>
-                </div>
-                <div class="card bg-white p-8 rounded-xl shadow-lg text-center">
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Social Media Strategy</h3>
-                    <p class="text-gray-600">Build a loyal audience with engaging social media content.</p>
-                </div>
-            </div>
+    <section id="services" class="py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 poppins">
+            Our Core Services
+          </h2>
+          <p class="text-gray-600">
+            We provide comprehensive digital marketing solutions tailored to
+            your business needs
+          </p>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="card p-8 animate-on-scroll">
+            <div class="card-icon mx-auto">
+              <i class="fas fa-search text-blue-600 text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-center text-gray-800">
+              SEO Optimization
+            </h3>
+            <p class="text-gray-600 mb-4 text-center">
+              Dominate search engine rankings with our data-driven SEO
+              strategies that increase visibility and organic traffic.
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> Keyword
+                research & analysis
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> On-page
+                & technical SEO
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> Content
+                optimization
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> Backlink
+                strategy
+              </li>
+            </ul>
+          </div>
+          <div class="card p-8 animate-on-scroll">
+            <div class="card-icon mx-auto">
+              <i class="fas fa-ad text-blue-600 text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-center text-gray-800">
+              PPC Advertising
+            </h3>
+            <p class="text-gray-600 mb-4 text-center">
+              Maximize ROI with targeted, high-performance PPC campaigns across
+              Google, Bing, and social platforms.
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> Google
+                Ads management
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> Social
+                media advertising
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Remarketing campaigns
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Conversion rate optimization
+              </li>
+            </ul>
+          </div>
+          <div class="card p-8 animate-on-scroll">
+            <div class="card-icon mx-auto">
+              <i class="fas fa-hashtag text-blue-600 text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-center text-gray-800">
+              Social Media Strategy
+            </h3>
+            <p class="text-gray-600 mb-4 text-center">
+              Build a loyal audience with engaging social media content and
+              strategic community management.
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> Content
+                creation & curation
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Platform-specific strategies
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Community engagement
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                Influencer partnerships
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-gray-100 py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">About GrowEasy</h2>
-            <p class="text-lg text-center max-w-3xl mx-auto text-gray-600">GrowEasy is your trusted partner in digital marketing. Our expert team combines creativity and data to craft strategies that drive traffic, leads, and growth for businesses of all sizes.</p>
+    <section id="about" class="py-24 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-16 lg:mb-0 animate-on-scroll">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="GrowEasy Team"
+              class="rounded-2xl shadow-xl w-full"
+            />
+          </div>
+          <div class="lg:w-1/2 lg:pl-16 animate-on-scroll">
+            <h2
+              class="text-3xl md:text-4xl font-bold mb-6 text-gray-800 poppins"
+            >
+              About GrowEasy
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              GrowEasy is your trusted partner in digital marketing. Founded in
+              2015, we've helped hundreds of businesses transform their online
+              presence and achieve remarkable growth.
+            </p>
+            <p class="text-lg text-gray-600 mb-8">
+              Our expert team combines creativity and data to craft strategies
+              that drive traffic, leads, and growth for businesses of all sizes.
+              We believe in transparent communication and measurable results.
+            </p>
+            <div class="flex space-x-4">
+              <div class="flex-1">
+                <div class="text-2xl font-bold text-blue-600 mb-2">
+                  8+ Years
+                </div>
+                <div class="text-gray-600">Industry Experience</div>
+              </div>
+              <div class="flex-1">
+                <div class="text-2xl font-bold text-blue-600 mb-2">
+                  50+ Experts
+                </div>
+                <div class="text-gray-600">Dedicated Team</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">What Our Clients Say</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div class="card bg-white p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-600 italic mb-4">"GrowEasy’s SEO strategies tripled our website traffic in just months!"</p>
-                    <p class="font-semibold text-blue-700">– Sarah Johnson, CEO of TechTrend</p>
-                </div>
-                <div class="card bg-white p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-600 italic mb-4">"Their PPC campaigns delivered a 400% ROI. Truly exceptional!"</p>
-                    <p class="font-semibold text-blue-700">– Michael Lee, Founder of ShopEasy</p>
-                </div>
+    <section
+      id="testimonials"
+      class="py-24 bg-gradient-to-r from-blue-50 to-indigo-50"
+    >
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 poppins"
+        >
+          What Our Clients Say
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="testimonial-card bg-white p-8 animate-on-scroll">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80"
+                alt="Sarah Johnson"
+                class="client-img mr-4"
+              />
+              <div>
+                <h4 class="font-bold text-lg">Sarah Johnson</h4>
+                <p class="text-blue-600">CEO of TechTrend</p>
+              </div>
             </div>
+            <p class="text-gray-600 italic mb-4">
+              "GrowEasy's SEO strategies tripled our website traffic in just
+              three months! Their team is incredibly knowledgeable and
+              responsive. We've seen a 150% increase in qualified leads since
+              partnering with them."
+            </p>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="testimonial-card bg-white p-8 animate-on-scroll">
+            <div class="flex items-center mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                alt="Michael Lee"
+                class="client-img mr-4"
+              />
+              <div>
+                <h4 class="font-bold text-lg">Michael Lee</h4>
+                <p class="text-blue-600">Founder of ShopEasy</p>
+              </div>
+            </div>
+            <p class="text-gray-600 italic mb-4">
+              "Their PPC campaigns delivered a 400% ROI in the first quarter.
+              Truly exceptional! The team took the time to understand our
+              business goals and created a customized strategy that exceeded our
+              expectations."
+            </p>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Let’s Grow Together</h2>
-            <form class="max-w-lg mx-auto">
-                <div class="mb-6">
-                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                    <input type="text" id="name" class="w-full p-4 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-300" placeholder="Your Name" required aria-required="true">
-                </div>
-                <div class="mb-6">
-                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                    <input type="email" id="email" class="w-full p-4 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-300" placeholder="Your Email" required aria-required="true">
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                    <textarea id="message" class="w-full p-4 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-300" rows="5" placeholder="Your Message" required aria-required="true"></textarea>
-                </div>
-                <button type="submit" class="btn-cta bg-white text-blue-700 px-8 py-4 rounded-full font-semibold w-full hover:bg-blue-100" aria-label="Send Message">Send Message</button>
+    <section id="contact" class="gradient-bg text-white py-24 relative">
+      <div
+        class="absolute top-0 left-0 w-full h-full pattern-bg opacity-10"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-64 h-64 bg-blue-400 rounded-full opacity-20 -mt-32 -mr-32"
+      ></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 poppins">
+            Let's Grow Together
+          </h2>
+          <p class="text-xl text-center text-blue-100 max-w-2xl mx-auto mb-12">
+            Ready to take your business to the next level? Contact us today for
+            a free consultation.
+          </p>
+
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="mb-4">
+                <label for="name" class="block text-sm font-medium mb-2"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-white focus:border-transparent"
+                  placeholder="Your Name"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="email" class="block text-sm font-medium mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-white focus:border-transparent"
+                  placeholder="Your Email"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="phone" class="block text-sm font-medium mb-2"
+                  >Phone</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-white focus:border-transparent"
+                  placeholder="Your Phone"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="service" class="block text-sm font-medium mb-2"
+                  >Service Interest</label
+                >
+                <select
+                  id="service"
+                  class="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-white focus:border-transparent"
+                >
+                  <option value="">Select a service</option>
+                  <option value="seo">SEO Optimization</option>
+                  <option value="ppc">PPC Advertising</option>
+                  <option value="social">Social Media Marketing</option>
+                  <option value="content">Content Marketing</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="mb-6 md:col-span-2">
+                <label for="message" class="block text-sm font-medium mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  class="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-white focus:border-transparent"
+                  rows="5"
+                  placeholder="Tell us about your project"
+                  required
+                  aria-required="true"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn-cta px-8 py-4 rounded-full font-semibold w-full md:col-span-2 hover:bg-blue-600"
+                aria-label="Send Message"
+              >
+                Send Message
+              </button>
             </form>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">© 2025 GrowEasy Digital Marketing. All rights reserved.</p>
+    <footer class="bg-gray-900 text-white pt-16 pb-10">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <div class="flex items-center mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-chart-line text-white text-xl"></i>
+              </div>
+              <h3 class="text-2xl font-extrabold text-white poppins">
+                GrowEasy
+              </h3>
+            </div>
+            <p class="text-gray-400 mb-4">
+              Transforming businesses through innovative digital marketing
+              strategies since 2015.
+            </p>
+            <div class="flex space-x-3">
+              <a href="#" class="social-icon" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Services</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >SEO Optimization</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >PPC Advertising</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Social Media Marketing</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Content Marketing</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Email Marketing</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Company</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Contact Info</h4>
+            <ul class="space-y-3 text-gray-400">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-500"></i>
+                <span>123 Marketing St, Digital City, DC 10001</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone mr-3 text-blue-500"></i>
+                <span>(555) 123-4567</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-blue-500"></i>
+                <span>hello@groweasy.com</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-clock mr-3 text-blue-500"></i>
+                <span>Mon-Fri: 9AM - 6PM</span>
+              </li>
+            </ul>
+          </div>
         </div>
+        <div class="border-t border-gray-800 pt-8 text-center">
+          <p class="text-gray-400">
+            © 2025 GrowEasy Digital Marketing. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
 
-    <!-- JavaScript for Navbar and Form -->
+    <!-- JavaScript -->
     <script>
-        // Hamburger Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        });
+      // Hamburger Menu Toggle
+      const hamburger = document.querySelector(".hamburger");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("flex");
+      });
 
-        // Close mobile menu on link click
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
+      // Close mobile menu on link click
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+        });
+      });
+
+      // Form Submission
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.innerHTML =
+          '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+        submitButton.disabled = true;
+
+        setTimeout(() => {
+          submitButton.textContent = "Message Sent!";
+          submitButton.classList.add("bg-green-500");
+          setTimeout(() => {
+            form.reset();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+            submitButton.classList.remove("bg-green-500");
+          }, 2000);
+        }, 1500);
+      });
+
+      // Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("nav-scrolled");
+        } else {
+          navbar.classList.remove("nav-scrolled");
+        }
+      });
+
+      // Scroll animation
+      const animateElements = document.querySelectorAll(".animate-on-scroll");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -100px 0px",
+        }
+      );
+
+      animateElements.forEach((element) => {
+        observer.observe(element);
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth",
             });
+          }
         });
-
-        // Form Submission
-        const form = document.querySelector('form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            setTimeout(() => {
-                alert('Thank you for your message! We’ll get back to you soon.');
-                form.reset();
-                submitButton.textContent = 'Send Message';
-                submitButton.disabled = false;
-            }, 1000);
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
