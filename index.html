@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowEasy Digital Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .btn-cta {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header Section -->
+    <header class="nav-sticky shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-blue-700">GrowEasy</h1>
+                <ul class="flex space-x-8 text-sm font-medium">
+                    <li><a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Home">Home</a></li>
+                    <li><a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Services">Services</a></li>
+                    <li><a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="About">About</a></li>
+                    <li><a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Testimonials">Testimonials</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors" aria-label="Contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Elevate Your Brand with Expert Digital Marketing</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Transform your online presence with tailored SEO, PPC, and social media strategies that drive results.</p>
+            <a href="#contact" class="btn-cta bg-white text-blue-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-100" aria-label="Get Started">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Our Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">SEO Optimization</h3>
+                    <p class="text-gray-600">Boost your search engine rankings with our data-driven SEO strategies.</p>
+                </div>
+                <div class="card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">PPC Advertising</h3>
+                    <p class="text-gray-600">Drive targeted traffic and maximize ROI with expertly crafted PPC campaigns.</p>
+                </div>
+                <div class="card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Social Media Strategy</h3>
+                    <p class="text-gray-600">Engage and grow your audience with compelling social media content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Who We Are</h2>
+            <p class="text-lg text-center max-w-3xl mx-auto text-gray-600">At GrowEasy, we’re a team of passionate digital marketers dedicated to helping businesses succeed online. With expertise in SEO, PPC, and social media, we craft personalized strategies that deliver measurable results.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Client Success Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"GrowEasy transformed our online presence, tripling our leads in just months!"</p>
+                    <p class="font-semibold text-blue-700">– Sarah Johnson, CEO of TechTrend</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"Their social media campaigns brought our brand to life. Exceptional results!"</p>
+                    <p class="font-semibold text-blue-700">– Michael Lee, Founder of ShopEasy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Let’s Connect</h2>
+            <div class="max-w-lg mx-auto">
+                <div class="mb-6">
+                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="name" class="w-full p-4 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-300" placeholder="Your Name" required aria-required="true">
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="email" class="w-full p-4 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-300" placeholder="Your Email" required aria-required="true">
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" class="w-full p-4 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-300" rows="5" placeholder="Your Message" required aria-required="true"></textarea>
+                </div>
+                <button type="submit" class="btn-cta bg-white text-blue-700 px-8 py-4 rounded-full font-semibold w-full hover:bg-blue-100" aria-label="Send Message">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">© 2025 GrowEasy Digital Marketing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            setTimeout(() => {
+                alert('Thank you for your message! We’ll get back to you soon.');
+                form.reset();
+                submitButton.textContent = 'Send Message';
+                submitButton.disabled = false;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
